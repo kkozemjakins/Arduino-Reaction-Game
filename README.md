@@ -3,7 +3,7 @@
 This is my first *Arduino* game, i am not saying this is the most correct way, but this is the way i had made it and it works. Of course there is the room for imporovement so if you want you can leave a suggestion 
 The idea is that who quicker will press the button **wins**!
 
-## ![til](assets\VID.gif)
+## ![til](assets/VID.gif)
 
 
 **Here is the list of components:**
