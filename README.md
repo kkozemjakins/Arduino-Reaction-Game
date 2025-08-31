@@ -7,19 +7,20 @@ The idea is that who quicker will press the button **wins**!
 
 
 **Here is the list of components:**
-1.Arduino Uno: The microcontroller that runs the game.
 
-2.Countdown Light LEDs (Red, Yellow, Green): These are the core visual elements for the countdown.
+ 1.Arduino Uno: The microcontroller that runs the game.
 
-3.Player LEDs (2): One for each player to indicate who won the round.
+ 2.Countdown Light LEDs (Red, Yellow, Green): These are the core visual elements for the countdown.
 
-4.Buttons (3): Two for the players, and one to start the game.
+ 3.Player LEDs (2): One for each player to indicate who won the round.
 
-5.Buzzer: An active buzzer that provides an audio cue for the "go" signal.
+ 4.Buttons (3): Two for the players, and one to start the game.
 
-6.LCD Matrix (128x32): This will display to show the score.
+ 5.Buzzer: An active buzzer that provides an audio cue for the "go" signal.
 
-7.Resistors (5 x 220 Ohm): These are crucial for protecting your LEDs from too much current.
+ 6.LCD Matrix (128x32): This will display to show the score.
+
+ 7.Resistors (5 x 220 Ohm): These are crucial for protecting your LEDs from too much current.
 
 **Wiring Diagram and Connections:**
 This schematic shows you how to connect all the components to your Arduino. The diagram is for a common I2C OLED display, which has four pins: GND, VCC, SDA, and SCL.
