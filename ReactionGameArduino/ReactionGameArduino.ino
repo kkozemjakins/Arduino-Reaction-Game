@@ -35,9 +35,10 @@ int player1Score = 0;
 int player2Score = 0;
 
 // Reaction times for last round
-unsigned long reactionTimeP1 = 0;
-unsigned long reactionTimeP2 = 0;
-unsigned long goSignalTime = 0;
+float reactionTimeP1 = 0.0;
+float reactionTimeP2 = 0.0;
+
+float goSignalTime = 0.0;
 
 // Flags to check if players have pressed
 bool p1Pressed = false;
@@ -185,7 +186,7 @@ void handleGo() {
 
   // Player 1
   if (!p1Pressed && digitalRead(PLAYER1_BUTTON_PIN) == LOW) {
-    reactionTimeP1 = millis() - goSignalTime;
+    reactionTimeP1 = (millis() - goSignalTime) / 1000.0; // convert to seconds
     p1Pressed = true;
     if (firstPlayer == 0) {
       firstPlayer = 1; // P1 is the winner
@@ -194,7 +195,7 @@ void handleGo() {
 
   // Player 2
   if (!p2Pressed && digitalRead(PLAYER2_BUTTON_PIN) == LOW) {
-    reactionTimeP2 = millis() - goSignalTime;
+    reactionTimeP2 = (millis() - goSignalTime) / 1000.0; // convert to seconds
     p2Pressed = true;
     if (firstPlayer == 0) {
       firstPlayer = 2; // P2 is the winner
@@ -265,18 +266,25 @@ void declareWinner(int winner) {
 
 
 void displayScores() {
-  char buffer[20];  // buffer for text
+  char buffer[20];
 
   Lcd.Clear();
 
+  // Convert reaction times to integer and milliseconds
+  int secP1 = (int)reactionTimeP1;
+  int msP1 = (int)((reactionTimeP1 - secP1) * 1000);
+
+  int secP2 = (int)reactionTimeP2;
+  int msP2 = (int)((reactionTimeP2 - secP2) * 1000);
+
   // Player 1
   Lcd.Cursor(0, 1);
-  sprintf(buffer, "P1:%d RT:%lums", player1Score, reactionTimeP1);
+  sprintf(buffer, "P1:%d RT:%d.%03d", player1Score, secP1, msP1);
   Lcd.Display(buffer);
 
   // Player 2
   Lcd.Cursor(1, 1);
-  sprintf(buffer, "P2:%d RT:%lums", player2Score, reactionTimeP2);
+  sprintf(buffer, "P2:%d RT:%d.%03d", player2Score, secP2, msP2);
   Lcd.Display(buffer);
 }
 
