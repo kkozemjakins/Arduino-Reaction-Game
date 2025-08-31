@@ -270,7 +270,7 @@ void displayScores() {
 
   Lcd.Clear();
 
-  // Convert reaction times to integer and milliseconds
+  // Convert reaction times to integer seconds and milliseconds
   int secP1 = (int)reactionTimeP1;
   int msP1 = (int)((reactionTimeP1 - secP1) * 1000);
 
@@ -279,12 +279,12 @@ void displayScores() {
 
   // Player 1
   Lcd.Cursor(0, 1);
-  sprintf(buffer, "P1:%d RT:%d.%03d", player1Score, secP1, msP1);
+  sprintf(buffer, "P1:%d RT:%d.%03ds", player1Score, secP1, msP1);
   Lcd.Display(buffer);
 
   // Player 2
   Lcd.Cursor(1, 1);
-  sprintf(buffer, "P2:%d RT:%d.%03d", player2Score, secP2, msP2);
+  sprintf(buffer, "P2:%d RT:%d.%03ds", player2Score, secP2, msP2);
   Lcd.Display(buffer);
 }
 
